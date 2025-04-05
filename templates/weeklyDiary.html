@@ -1,0 +1,30 @@
+{% extends "layout.html"%}
+{% block body%}
+<div class="container">
+	<h1 class="text-center">My Weekly Diary</h1>
+	<p class="text-center">Welcome to my personal log!</p>
+	<h2>Week: {{ week }}</h2>
+	<!-- {% if name%}
+		<h3>Hello {{name}}</h3>
+	{% else %}
+		<h3> Hello World</h3>
+	{% endif %} -->
+
+	<ul>
+		<li>Achievements:</li>
+			<ul>
+				{% for achievement in achievements %}
+				<li>{{ achievement }}</li>
+				{% endfor %}
+			</ul>
+		<li>Challenge:
+			<ul>
+				{% for challenge in challenges %}
+				<li>{{ challenge }}</li>
+				{% endfor %}
+			</ul>
+		</li>
+		<li>Mood: {{ mood }}</li>
+	</ul>
+</div>
+{% endblock %}
