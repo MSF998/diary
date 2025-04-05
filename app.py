@@ -1,32 +1,30 @@
 from flask import Flask, render_template, request
+from routes.jobPostings import job_postings_bp
+from routes.weeklyDiary import weekly_diary_bp
 
 app = Flask(__name__)
+
+#Register Blueprints
+app.register_blueprint(job_postings_bp)
+app.register_blueprint(weekly_diary_bp)
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
-@app.route('/weekly-diary')
-# @app.route('/<name>')
-def weekly_diary(name=None):
-    week = "April 04, 2025"
-    achievements = [
-        "Read 40 Pages of the book",
-        "Memorized 5 Pages from the Quran",
-        "Learnt Multi Threading in Python",
-        "Started Working in Personal Diary Project",
-        "Hell"
-    ]
-    challenges = ["Stayed up too","Ate less","Hungry"]
-    mood = "Sad"
+@app.route('/learning')
+def learning():
+    #List down the things I learned this week
+    #List down the courses I found useful
+    return "I learned Iterators and Generators this week"
 
-    return render_template('weeklyDiary.html',
-                           week=week,
-                           achievements=achievements,
-                           challenges=challenges,
-                           mood=mood,
-                           name=name)
+
+@app.route('/goals')
+def goals():
+    #List down the goals I am planning to achieve
+    return "My goal is to achieve so and so"
 
 
  
