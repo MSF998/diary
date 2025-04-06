@@ -6,9 +6,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+job_postings_bp = Blueprint('job_postings', __name__)
 
-def scrape_amazon_jobs(query="python"):
-    url = f"https://www.amazon.jobs/en/search?base_query={query}&industry_experience=one_to_three_years&country%5B%5D=IND&state%5B%5D=Karnataka"
+def scrape_amazon_jobs(query="python",yoe="one_to_three_years"):
+    url = f"https://www.amazon.jobs/en/search?base_query={query}&industry_experience={yoe}&country%5B%5D=IND&state%5B%5D=Karnataka"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
@@ -46,16 +47,14 @@ def scrape_amazon_jobs(query="python"):
 
     except Exception as e:
         print(e)
-        return {"error": str(e)}
+        return [{"error": str(e)}]
     finally:
         driver.quit()
 
 
-job_postings_bp = Blueprint('job_postings', __name__)
-
 @job_postings_bp.route('/job-postings')
 def job_postings():
-    job_details = scrape_amazon_jobs()
+    amazon_jobs  = scrape_amazon_jobs()
     #Aggregate job postings from various sites
     """
     Company Name
@@ -64,8 +63,7 @@ def job_postings():
     YOE Required
     Location
     """
-    print(job_details)
-    return jsonify(job_details)
+    return jsonify(amazon_jobs)
     # return render_template('jobPostings.html',job_urls=job_urls)
 
 
