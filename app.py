@@ -14,6 +14,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/content-review')
+def content_review():
+    return "Aggregate Reviews on Products"
+
+
 @app.route('/learning')
 def learning():
     #List down the things I learned this week

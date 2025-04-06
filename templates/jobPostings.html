@@ -1,0 +1,9 @@
+{% extends "layout.html"%}
+{% include "nav.html" %}
+{% block body%}
+<ul>
+    {% for job_url in job_urls %}
+        <a href="{{ job_url }}">Job</a>
+    {% endfor %}
+</ul>
+{% endblock %}
