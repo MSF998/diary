@@ -67,6 +67,4 @@ def job_postings():
     """
     # return jsonify(amazon_jobs)
     return render_template('jobPostings.html',amzn_jobs=amazon_jobs)
-
-
 #TODO:Scrape Jon Postings Data from Amazon, Microsoft, IBM, Cognizant, Concentrix
