@@ -1,9 +1,13 @@
 {% extends "layout.html"%}
 {% include "nav.html" %}
 {% block body%}
-<ul>
-    {% for job_url in job_urls %}
-        <a href="{{ job_url }}">Job</a>
+<div>
+    <h1>Amazon Jobs</h1>    
+    {% for job_details in amzn_jobs %}
+        <h3>{{job_details['title']}}</h3>
+        <h5>{{job_details['location']}}</h5>
+        <a href="https://www.amazon.jobs{{job_details['href']}}" target="_blank">View</a>
+        <P>{{job_details['job_id']}}</P>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
