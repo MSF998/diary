@@ -14,7 +14,9 @@ def scrape_amazon_jobs(query="python",yoe="one_to_three_years"):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
     options = Options()
-    options.headless = True
+    options.add_argument('--headless=new')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--window-size=1920,1080') 
     driver = webdriver.Chrome(options=options)
     
     try:
