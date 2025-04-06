@@ -63,8 +63,8 @@ def job_postings():
     YOE Required
     Location
     """
-    return jsonify(amazon_jobs)
-    # return render_template('jobPostings.html',job_urls=job_urls)
+    # return jsonify(amazon_jobs)
+    return render_template('jobPostings.html',amzn_jobs=amazon_jobs)
 
 
 #TODO:Scrape Jon Postings Data from Amazon, Microsoft, IBM, Cognizant, Concentrix
